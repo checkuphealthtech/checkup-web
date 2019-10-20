@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+{% block content %}
+        <style>
+          /**
+           * The CSS shown here will not be introduced in the Quickstart guide, but shows
+           * how you can use CSS to style your Element's container.
+           */
+          .StripeElement {
+            box-sizing: border-box;
+
+            height: 40px;
+
+            padding: 10px 12px;
+
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background-color: white;
+
+            box-shadow: 0 1px 3px 0 #e6ebf1;
+            -webkit-transition: box-shadow 150ms ease;
+            transition: box-shadow 150ms ease;
+          }
+
+          .StripeElement--focus {
+            box-shadow: 0 1px 3px 0 #cfd7df;
+          }
+
+          .StripeElement--invalid {
+            border-color: #fa755a;
+          }
+
+          .StripeElement--webkit-autofill {
+            background-color: #fefde5 !important;
+          }
+        </style>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Bloodwork Tests</h1>
+          </div>
+
+          <div class="row">
+
+            <div class="col-lg-4">
+
+              <!-- Dropdown Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Basic Blood Chemistry $84.99</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <p>
+                      {% for specific_measurement in product_map.basic.specific_measurements %}
+                      {{ specific_measurement }}<br>
+                    
+                    {% endfor %}
+                  </p>
+                  <a href="#" class="btn btn-primary btn-icon-split" data-plan="basic" data-toggle="modal" data-target="#purchaseModal">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-shopping-cart"></i>
+                    </span>
+                    <span class="text">Purchase</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <!-- Dropdown Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Complete Blood Chemistry $275.99</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <p>
+                      {% for specific_measurement in product_map.complete.specific_measurements %}
+                      {{ specific_measurement }}<br>
+                    
+                    {% endfor %}
+                  </p>
+                  <a href="#" class="btn btn-primary btn-icon-split" data-plan="complete" data-toggle="modal" data-target="#purchaseModal">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-shopping-cart"></i>
+                    </span>
+                    <span class="text">Purchase</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <!-- Dropdown Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Ultimate Anti-aging Panel $359.99</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <p>
+                    {% for specific_measurement in product_map.ultimate.specific_measurements %}
+                      {{ specific_measurement }}<br>
+                    
+                    {% endfor %}
+                  </p>
+                  <a href="#" class="btn btn-primary btn-icon-split" data-plan="ultimate" data-toggle="modal" data-target="#purchaseModal">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-shopping-cart"></i>
+                    </span>
+                    <span class="text">Purchase</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="purchaseModalScrollableTitle">Order New Bloodwork</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="customer-details">
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                          <label id="plan-description">N/A</label> 
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="John" value="{{ current_user.first_name }}">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Doe" value="{{ current_user.last_name }}">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="phone">Phone</label>
+                          <input type="text" class="form-control" name="phone" id="phone" placeholder="Doe" value="5555554444">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control" name="email" id="phone" placeholder="email" value="{{ current_user.email }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Address</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" value="923 Stanford">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress2">Address 2</label>
+                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity" value="Irvine">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                          <option>Choose...</option>
+                          <option selected>California<option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip" value="92612">
+                      </div>
+                    </div>
+                    <!-- <button>Submit Payment</button> -->
+                  </form>
+                  <form action="{{ url_for('order.charge')}} " method="post" id="payment-form">
+                    <input type="hidden" name="product_key">
+                    <div class="form-row">
+                      <label for="card-element">
+                        Credit or debit card
+                      </label>
+                      <div id="card-element" class="form-control">
+                        <!-- A Stripe Element will be inserted here. -->
+                      </div>
+
+                      <!-- Used to display form errors. -->
+                      <div id="card-errors" role="alert"></div>
+                    </div>
+
+                    <!-- <button type="button" class="btn btn-primary">Submit Payment</button> -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary" >Purchase</button>
+                      <!-- <a id="buy-btn" class="btn btn-primary" href="#" role="button">Purchase</a> -->
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <script>
+        $( document ).ready(function() {
+          // Onclick listeners for "Purchase" buttons
+          $("a[data-plan='basic'], a[data-plan='complete'], a[data-plan='ultimate']").click(function(eventObj) {
+            anchor = eventObj.currentTarget;
+            var bloodworkPlan = anchor.getAttribute("data-plan");
+            var description = $(anchor).closest(".card.shadow").find("h6.text-primary").html()
+            var description = description.split("$")[0];
+            $("input[name='product_key']").val(bloodworkPlan);
+            $("#plan-description").html(description);
+          });
+          
+          // $("#buy-btn").on('click',function() {
+          //   $(document.getElementById('payment-form')).submit();
+          // });
+
+          // Create a Stripe client.
+          //var stripe = Stripe('pk_test_vYT557U2A4P5lOCvDjNlhsjr00lhw2JgkN');
+          var stripe = Stripe('{{ config.STRIPE_API_KEY_PUBLIC }}');
+
+          // Create an instance of Elements.
+          var elements = stripe.elements();
+
+          // Custom styling can be passed to options when creating an Element.
+          // (Note that this demo uses a wider set of styles than the guide below.)
+          var style = {
+            base: {
+              color: '#32325d',
+              fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+              fontSmoothing: 'antialiased',
+              fontSize: '16px',
+              '::placeholder': {
+                color: '#aab7c4'
+              }
+            },
+            invalid: {
+              color: '#fa755a',
+              iconColor: '#fa755a'
+            }
+          };
+
+          // Create an instance of the card Element.
+          var card = elements.create('card', {style: style});
+
+          // Add an instance of the card Element into the `card-element` <div>.
+          card.mount('#card-element');
+
+          // Handle real-time validation errors from the card Element.
+          card.addEventListener('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+              displayError.textContent = event.error.message;
+            } else {
+              displayError.textContent = '';
+            }
+          });
+
+          // Handle form submission.
+          var form = document.getElementById('payment-form');
+          
+
+          form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+              if (result.error) {
+                // Inform the user if there was an error.
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+              } else {
+                // Send the token to your server.
+                stripeTokenHandler(result.token);
+              }
+            });
+          });
+
+          // Submit the form with the token ID.
+          function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            // clone fields
+            hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type','hidden');
+            hiddenInput.setAttribute('name','first_name');
+            hiddenInput.setAttribute('value',$('form.customer-details input[name="first_name"]').val());
+            form.appendChild(hiddenInput);
+
+            hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type','hidden');
+            hiddenInput.setAttribute('name','last_name');
+            hiddenInput.setAttribute('value',$('form.customer-details input[name="last_name"]').val());
+            form.appendChild(hiddenInput);
+
+            hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type','hidden');
+            hiddenInput.setAttribute('name','phone');
+            hiddenInput.setAttribute('value',$('form.customer-details input[name="phone"]').val());
+            form.appendChild(hiddenInput);
+
+            hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type','hidden');
+            hiddenInput.setAttribute('name','email');
+            hiddenInput.setAttribute('value',$('form.customer-details input[name="email"]').val());
+            form.appendChild(hiddenInput);
+
+
+
+            // Submit the form
+            form.submit();
+          }
+        });
+        </script>
+
+        <!-- /.container-fluid -->
+{% endblock %}

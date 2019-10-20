@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">You're all set!</h1>
+          <h2 >Order Confirmation #{{details.order_number}}</h2>
+          <p>{{details.name}}</p>
+          <p>{{details.email}}</p>
+          <p>{{details.phone}}</p>
+          <div class="row">
+
+            <div class="col-lg-6">
+
+              <!-- Basic Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Please visit your clinic: University Of California, Irvine Student Health Center</h6>
+                </div>
+                <div class="card-body">
+                  <p>Address:</p>
+                  <p>
+                    501 Student Health<br/>
+                    Irvine, CA 92697-5200<br/>
+                    P: (949) 824-5301 | F: (949) 824‑3033<br/>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Basic Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Order: {{details.description}}</h6>
+                </div>
+                <div class="card-body">
+                  <p>
+                    {% for specific_measurement in details.specific_measurements %}
+                    {{ specific_measurement }}<br>
+                  
+                  {% endfor %}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+{% endblock %}
