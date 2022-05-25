@@ -21,4 +21,4 @@ boto3==1.9.154
 passlib==1.7.1
 flask-login==0.4.1
 flask-jwt-extended==3.18.2
-PyJWT==1.7.1
+PyJWT==2.4.0
